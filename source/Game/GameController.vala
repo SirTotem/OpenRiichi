@@ -104,6 +104,7 @@ class GameController : Object
         round.set_tile_select_state.connect(renderer.set_active);
         round.set_tile_select_groups.connect(renderer.set_tile_select_groups);
         round.game_riichi.connect(declared_riichi);
+	
 
         round.game_finished.connect(renderer.game_finished);
         round.game_tile_assignment.connect(renderer.tile_assignment);
@@ -117,6 +118,9 @@ class GameController : Object
         round.game_open_kan.connect(renderer.open_kan);
         round.game_pon.connect(renderer.pon);
         round.game_chii.connect(renderer.chii);
+	 if(settings.learning_mode ==  Options.OnOffEnum.ON){
+	    round.send_tips.connect(menu.set_tips);
+	 }
 
         renderer.tile_selected.connect(round.client_tile_selected);
 
@@ -130,6 +134,7 @@ class GameController : Object
             menu.ron_pressed.connect(round.client_ron);
             menu.continue_pressed.connect(round.client_continue);
             menu.void_hand_pressed.connect(round.client_void_hand);
+	   
         }
     }
 
@@ -143,7 +148,9 @@ class GameController : Object
         int index = player_index == -1 ? 0 : player_index;
 
         game.start_round(info);
-        menu = new GameMenuView(settings, index, start_info.decision_time, start_info.round_wait_time, start_info.hanchan_wait_time, start_info.game_wait_time);
+	int time= start_info.decision_time;
+	if((settings.learning_mode ==  Options.OnOffEnum.ON)) time=-1;
+        menu = new GameMenuView(settings, index, time, start_info.round_wait_time, start_info.hanchan_wait_time, start_info.game_wait_time);
         menu.display_score_pressed.connect(display_score_pressed);
         menu.score_timer_expired.connect(score_timer_expired);
 

@@ -413,6 +413,7 @@ public class RoundState : Object
 
         return true;
     }
+    
 
     public bool can_tsumo()
     {
@@ -433,6 +434,12 @@ public class RoundState : Object
     public bool can_closed_kan_with(TileType type)
     {
         return wall.can_call && wall.can_kan && current_player.can_closed_kan_with(type);
+    }
+    
+    public string[] get_tips(RoundStatePlayer player){
+      
+      return player.tips(player.wind);
+      
     }
 
     public bool can_late_kan()
@@ -903,6 +910,11 @@ public class RoundStatePlayer
                 return false;
 
         return TileRules.tenpai_tiles(hand, calls).size > 0;
+    }
+    
+    public string[] tips( Wind wr){
+
+      return TileRules.tips(hand, calls, wr, this.wind);      
     }
 
     public bool can_late_kan()

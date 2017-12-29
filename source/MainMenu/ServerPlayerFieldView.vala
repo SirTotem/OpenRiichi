@@ -2,7 +2,7 @@ using Gee;
 
 public class ServerPlayerFieldView : Control
 {
-    private const string[] BOTS = { "NullBot", "SimpleBot" };
+    private const string[] BOTS = { "SimpleBot","NullBot" };
 
     private bool editable;
     private int slot;
@@ -47,16 +47,21 @@ public class ServerPlayerFieldView : Control
             expand_button.outer_anchor = Vec2(1, 0.5f);
             expand_button.clicked.connect(expand_clicked);
 
-            TextClickControl control = new TextClickControl("Open");
+            
+	    TextClickControl control;
+	    
+	    control = new TextClickControl("Open");
             control.clicked.connect(kick_clicked);
             texts.add(control);
-
+	    
             foreach (string bot in BOTS)
             {
                 control = new TextClickControl(bot);
                 control.clicked.connect(add_bot_clicked);
                 texts.add(control);
             }
+            
+           
 
             for (int i = 0; i < texts.size; i++)
             {
@@ -66,6 +71,7 @@ public class ServerPlayerFieldView : Control
                 text.outer_anchor = Vec2(0, 0);
                 text.visible = false;
             }
+
         }
 
         resize_style = ResizeStyle.ABSOLUTE;

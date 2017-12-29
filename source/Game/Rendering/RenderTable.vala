@@ -93,6 +93,7 @@ private class RenderTablePlayerNameField
     private RenderLabel3D wind_label;
     private RenderLabel3D name_label;
     private RenderLabel3D score_label;
+    private RenderLabel3D text_example;
 
     public RenderTablePlayerNameField(ResourceStore store, Vec3 center_size, float scale, float rotation, string name, Wind wind, int score)
     {
@@ -130,6 +131,9 @@ private class RenderTablePlayerNameField
 
         pos = Calculations.rotate_y(Vec3.empty(), -rotation, Vec3(offset + wind_label.end_size.x / 2 + score_label.end_size.x / 2, center_size.y, center_size.z / 2 * dist + name_label.end_size.z / 2 + score_label.end_size.z / 2));
         score_label.position = pos;
+	
+	
+	
     }
 
     public void render(RenderScene3D scene)
@@ -137,5 +141,6 @@ private class RenderTablePlayerNameField
         scene.add_object(wind_label);
         scene.add_object(name_label);
         scene.add_object(score_label);
+	scene.add_object(text_example);
     }
 }

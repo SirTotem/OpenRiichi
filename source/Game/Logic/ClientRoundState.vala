@@ -21,6 +21,8 @@ public class ClientRoundState : Object
     public signal void set_continue_state(bool enabled);
     public signal void set_void_hand_state(bool enabled);
     public signal void set_furiten_state(bool enabled);
+    public signal void send_tips(string[] tips);
+    
 
     public signal void set_tile_select_state(bool enabled);
     public signal void set_tile_select_groups(ArrayList<TileSelectionGroup>? selection_groups);
@@ -80,7 +82,9 @@ public class ClientRoundState : Object
     private void decision_finished()
     {
         action_state = State.DONE;
-
+	string[] tips = state.get_tips(state.self);
+	send_tips(tips);
+	
         set_chii_state(false);
         set_pon_state(false);
         set_kan_state(false);
@@ -127,8 +131,11 @@ public class ClientRoundState : Object
         bool can_riichi = state.can_riichi();
         bool can_tsumo = state.can_tsumo();
         bool can_void_hand = state.can_void_hand();
-
-        set_chii_state(false);
+	
+	string[] tips = state.get_tips(state.self);
+        send_tips(tips);
+	  
+	set_chii_state(false);
         set_pon_state(false);
         set_kan_state(can_kan);
         set_riichi_state(can_riichi);
@@ -161,7 +168,11 @@ public class ClientRoundState : Object
         bool can_pon = state.can_pon(state.self);
         bool can_kan = state.can_open_kan(state.self);
         bool can_ron = state.can_ron(state.self);
+	
+	string[] tips = state.get_tips(state.self);
+	send_tips(tips);
 
+	
         set_chii_state(can_chii);
         set_pon_state(can_pon);
         set_kan_state(can_kan);

@@ -34,7 +34,7 @@ public class GameStartInfo : Serializable
     {
         return player_list.to_array();
     }
-
+    
     public int starting_dealer { get; protected set; }
     public int starting_score { get; protected set; }
     public int round_count { get; protected set; }

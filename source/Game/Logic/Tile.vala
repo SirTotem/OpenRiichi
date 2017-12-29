@@ -164,6 +164,49 @@ public class Tile : Serializable
     {
         return "(" + ID.to_string() + ") " + tile_type.to_string() + (dora ? " dora" : " not dora");
     }
+    
+    public string to_string_eng()
+    {
+      string s="";
+      switch(tile_type){
+	  case TileType.BLANK: s="Unknown"; break;
+	  case TileType.MAN1: s="Characters 1"; break;
+	  case TileType.MAN2: s="Characters 2"; break;
+	  case TileType.MAN3:	s="Characters 3"; break;
+	  case TileType.MAN4: s="Characters 4"; break;
+	  case TileType.MAN5: s="Characters 5"; break;
+	  case TileType.MAN6: s="Characters 6";  break;
+	  case TileType.MAN7: s="Characters 7"; break;
+	  case TileType.MAN8: s="Characters 8"; break;
+	  case TileType.MAN9: s="Characters 9"; break;
+	  case TileType.PIN1: s="Dot 1"; break;
+	  case TileType.PIN2: s="Dot 2"; break;
+	  case TileType.PIN3: s="Dot 3"; break;
+	  case TileType.PIN4: s="Dot 4"; break;
+	  case TileType.PIN5: s="Dot 5"; break;
+	  case TileType.PIN6: s="Dot 6"; break;
+	  case TileType.PIN7: s="Dot 7"; break;
+	  case TileType.PIN8: s="Dot 8"; break;
+	  case TileType.PIN9: s="Dot 9"; break;
+	  case TileType.SOU1: s="Bamboo 1"; break;
+	  case TileType.SOU2: s="Bamboo 2"; break;
+	  case TileType.SOU3: s="Bamboo 3"; break;
+	  case TileType.SOU4: s="Bamboo 4"; break;
+	  case TileType.SOU5: s="Bamboo 5"; break;
+	  case TileType.SOU6: s="Bamboo 6"; break;
+	  case TileType.SOU7: s="Bamboo 7"; break;
+	  case TileType.SOU8: s="Bamboo 8"; break;
+	  case TileType.SOU9: s="Bamboo 9"; break;
+	  case TileType.TON: s="East Wind"; break;
+	  case TileType.NAN: s="South Wind"; break;
+	  case TileType.SHAA: s="West Wind"; break;
+	  case TileType.PEI: s="North Wind"; break;
+	  case TileType.HAKU: s="White Dragon"; break;
+	  case TileType.HATSU: s="Green Dragon"; break;
+	  case TileType.CHUN: s="Red Dragon"; break;
+      }
+        return s;
+    }
 
     public int ID { get; set; }
     public TileType tile_type { get; set; }

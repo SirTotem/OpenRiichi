@@ -39,6 +39,7 @@ abstract class MainMenuSubView : View2D
             name_label.inner_anchor = Vec2(0.5f, 1);
         }
 
+	  
         add_child(main_buttons_control);
         main_buttons_control.orientation = Orientation.VERTICAL;
         main_buttons_control.sizing_style = SizingStyle.AUTOSIZE;
@@ -59,6 +60,8 @@ abstract class MainMenuSubView : View2D
 
         main_buttons = get_main_buttons();
         menu_buttons = get_menu_buttons();
+	
+	
 
         if (main_buttons != null)
             foreach (MenuTextButton button in main_buttons)

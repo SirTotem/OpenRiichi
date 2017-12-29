@@ -15,6 +15,8 @@ public class GameMenuView : View2D
     private float start_time;
     private LabelControl timer;
     private LabelControl furiten;
+    
+    private QuickGuide quickguide;
 
     private MenuTextButton chii;
     private MenuTextButton pon;
@@ -74,14 +76,17 @@ public class GameMenuView : View2D
         hint_sound = store.audio_player.load_sound("hint");
 
         int padding = 30;
-        timer = new LabelControl();
-        add_child(timer);
-        timer.inner_anchor = Vec2(1, 0);
-        timer.outer_anchor = Vec2(1, 0);
-        timer.position = Vec2(-padding, padding / 2);
-        timer.font_size = 60;
-        timer.visible = false;
-
+	
+	if(settings.learning_mode ==  Options.OnOffEnum.OFF){
+	  timer = new LabelControl();
+	  add_child(timer);
+	  timer.inner_anchor = Vec2(1, 0);
+	  timer.outer_anchor = Vec2(1, 0);
+	  timer.position = Vec2(-padding, padding / 2);
+	  timer.font_size = 60;
+	  timer.visible = false;
+	}
+	
         furiten = new LabelControl();
         add_child(furiten);
         furiten.inner_anchor = Vec2(0, 0);
@@ -91,6 +96,8 @@ public class GameMenuView : View2D
         furiten.visible = false;
         furiten.text = "Furiten";
         furiten.color = Color.red();
+		
+	quickguide = new QuickGuide();
 
         chii = new MenuTextButton("MenuButtonSmall", "Chii");
         pon = new MenuTextButton("MenuButtonSmall", "Pon");
@@ -133,7 +140,11 @@ public class GameMenuView : View2D
 
         void_hand.visible = false;
         open_riichi.visible = settings.open_riichi == Options.OnOffEnum.ON;
-        position_buttons();
+	position_buttons();
+	
+	if(settings.learning_mode ==  Options.OnOffEnum.ON){
+	  add_child(quickguide);
+	}
     }
 
     private void position_buttons()
@@ -222,7 +233,17 @@ public class GameMenuView : View2D
     {
         furiten.visible = enabled;
     }
-
+    
+    //////
+    public void set_tips(string[] tips)
+    {
+     quickguide.delete_tips();
+    quickguide.add_tips(tips);
+      
+    }
+    /////
+    
+    
     public void set_timer(bool enabled)
     {
         if (timer.visible && enabled)

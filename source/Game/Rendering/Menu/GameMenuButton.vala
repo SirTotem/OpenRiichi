@@ -5,6 +5,8 @@ class GameMenuButton : Control
 
     private Sound click_sound;
     private Sound hover_sound;
+    
+    
 
     public GameMenuButton(string name)
     {

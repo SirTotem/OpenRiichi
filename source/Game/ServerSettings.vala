@@ -10,6 +10,7 @@ public class ServerSettings : Serializable
         aka_dora = Options.OnOffEnum.ON;
         multiple_ron = Options.OnOffEnum.ON;
         triple_ron_draw = Options.OnOffEnum.ON;
+	learning_mode= Options.OnOffEnum.OFF;
     }
 
     public ServerSettings.from_disk()
@@ -67,6 +68,8 @@ public class ServerSettings : Serializable
         settings.add("aka_dora = " + Options.on_off_enum_to_string(aka_dora));
         settings.add("multiple_ron = " + Options.on_off_enum_to_string(multiple_ron));
         settings.add("triple_ron_draw = " + Options.on_off_enum_to_string(triple_ron_draw));
+	
+	settings.add("learning_mode = " + Options.on_off_enum_to_string(learning_mode));
 
         return settings.to_array();
     }
@@ -93,9 +96,13 @@ public class ServerSettings : Serializable
         case "triple_ron_draw":
             triple_ron_draw = Options.parse_on_off_enum(value);
             break;
+	case "learning_mode":
+            learning_mode = Options.parse_on_off_enum(value);
+            break;
         }
     }
 
+    public Options.OnOffEnum learning_mode { get; set; }
     public Options.OnOffEnum open_riichi { get; set; }
     public Options.OnOffEnum aka_dora { get; set; }
     public Options.OnOffEnum multiple_ron { get; set; }

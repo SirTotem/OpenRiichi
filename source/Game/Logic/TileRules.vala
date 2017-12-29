@@ -82,6 +82,15 @@ public class TileRules
 
         return false;
     }
+    
+    public static string[] tips(ArrayList<Tile> hand, ArrayList<RoundStateCall>? calls, Wind wr, Wind wp)
+    {
+      Tips t= new Tips(hand,calls, wr, wp);
+      return t.gettips();       
+    }
+    
+    
+    
 
     public static bool can_closed_kan(ArrayList<Tile> hand, ArrayList<RoundStateCall>? calls, bool in_riichi)
     {

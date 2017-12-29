@@ -27,6 +27,9 @@ class MainMenuView : MainMenuSubView
         load_sub_view(options_view);
     }
 
+    
+    ///////////////////////////
+    
     private void options_apply()
     {
         restart();
@@ -56,7 +59,6 @@ class MainMenuView : MainMenuSubView
         MenuTextButton exit_button = new MenuTextButton("MenuButtonBig", "Exit");
         exit_button.clicked.connect(do_finish);
         buttons.add(exit_button);
-
         return buttons;
     }
 }
