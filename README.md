@@ -107,6 +107,9 @@ Feel free to make any changes and submit a pull request.
 
 ## Learning Mode
  
-This version of the client includes a Learning Mode, Adding to a regular match a simple wiki guide for rookies, and some tips about the current state of the game (in Alpha). Both can be shown and hide at any time, as long you select the option in Settings, before starting the game.
+This version of the client includes a Learning Mode, Adding to a regular match a simple wiki guide for rookies, and some tips about the current state of the game (in Alpha).
+
+Both can be shown and hide at any time, as long you select the option in Settings, before starting the game.
+
 Learning mode has no time decision limit.
 
